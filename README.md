@@ -1,7 +1,7 @@
 Projeto de álgebra linear sobre implementação de esteganografia e criptografia em imagens, desenvolvido no curso de Ciência da Computação da Universidade Federal de Rondônia 
 
 
-- [ ] Conversão de mensagem em texto para binário (ASCII)
+- [x] Conversão de mensagem em texto para binário (ASCII)
 - [ ] Identificar canal de cor de menor interferência (ou mais ruidoso?)
 - [ ] Isolar canais de cor da imagem
 - [ ] Criar lógica de iteração da imagem baseado na senha (hashing)
