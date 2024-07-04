@@ -24,7 +24,7 @@ def textToBin( Asciitext):
 
 #Quando for fazer a extração, os bit serão extraidos 1 por 1, toda vez que agrupar 8, passa essa funcao
 #para transformar em letra
-#Se a letra for \0 (00000000), a extração sabe que tem que terminar
+#Antes de chamar essa função, a extração precisa fazer a verificação se todos bits são 0 (fim da mensagem)
 
 #Pode receber uma listacalma, eu tenho um arra normal ou um np.array (melhor), mas sempre de tamanho 8
 def byteToText( byte): #byte = array de 8 bools
