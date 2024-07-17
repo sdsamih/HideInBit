@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 
 
-def compararCanais():
-    imagem = cv2.imread('lenna.png')
+def bestRGBChannel(caminho): #passar o caminho da imagem
+    imagem = cv2.imread(caminho)
     blue, green, red = cv2.split(imagem)
 
     mediaBlue = np.mean(blue)
@@ -12,15 +12,13 @@ def compararCanais():
 
     menor_media = min(mediaBlue, mediaGreen, mediaRed)
 
+
     if menor_media == mediaBlue:
-        menor_media = "canal azul"
+        return ("blue", blue)
     elif menor_media == mediaGreen:
-        menor_media = "canal verde "
+        return ("green", green)
     else:
-        menor_media = "canal vermelho" 
-
-    print(menor_media)
-    return menor_media
+        return ("red", red)
 
 
-#comparar = compararCanais()
+#print(bestRGBChannel("bluebest.png"))
