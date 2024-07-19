@@ -5,7 +5,7 @@ Projeto de álgebra linear sobre implementação de esteganografia e criptografi
 - [x] Identificar canal de cor mais adequado (~~o que gera menos mudancas de bit, ou~~ o que tem menor contribuicao na imagem?)
 - [x] Isolar canal de cor ideal da imagem
 - [x] Criar lógica de iteração da imagem baseado na senha (hashing)
-- [ ] Usar a lógica de iteração para manipular o canal de cores
+- [x] Usar a lógica de iteração para manipular o canal de cores
 - [ ] Aplicar o canal de cores manipulado na imagem original
 - [ ] Usar a lógica de iteração para recuperar a mensagem binária
 - [x] Reverter a mensagem binária para ASCII

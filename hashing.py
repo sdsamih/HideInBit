@@ -2,12 +2,22 @@ import cv2
 import numpy as np
 
 from comparar import *
+from binaryASCII import *
 
 import hashlib
 import random
 
 
 
+def setLastBit(value,bit):
+    mask = 0b00000001
+
+    if bit== 1:
+        newValue = value | mask #1
+    else:
+        newValue = value & ~ mask #0
+    
+    return newValue
 
 def textToHash(text):
     text = str(text).encode('ascii')
@@ -19,10 +29,7 @@ def textToHash(text):
 
 
 
-def iterate(caminho,senha): #iterar uma imagem baseado em uma senha, gerador de coordenadas que vai ser usado tanto para codificar quanto para decodificar
-
-    channel = bestRGBChannel(caminho)[1]
-    print(channel)
+def iterate(channel,senha): #iterar uma imagem baseado em uma senha, gerador de coordenadas que vai ser usado tanto para codificar quanto para decodificar
 
 
     rows=len(channel)
@@ -60,14 +67,41 @@ def iterate(caminho,senha): #iterar uma imagem baseado em uma senha, gerador de 
        #print(f"\ncoordernada escolhida: {chosenrow};{chosencolumn} baseada no numero {numero_gerado} ")
         yield((chosenrow,chosencolumn))
 
-coordGen = iterate("lenna.png","testefdsa")
 
-print(next(coordGen)) # gerador de coordenada (usado para codificar e decodificar)
-print(next(coordGen))
-print(next(coordGen))
-print(next(coordGen))
-print(next(coordGen))
-print(next(coordGen))
-print(next(coordGen))
-print(next(coordGen))
-print(next(coordGen))
+def insertBits(path,senha,message):
+
+    bits=textToBin(message)
+    
+    nameChannel,chosenchannel = bestRGBChannel(path)
+
+    image = cv2.imread(path)
+    
+    blue,green,red = cv2.split(image)
+
+
+    coordGen=iterate(chosenchannel,senha)
+
+    for bit in bits:
+        coords=next(coordGen)
+        row=coords[0]
+        column=coords[1]
+        print(f"{bit} vai ser inserido em {row,column}")
+
+        if(bit):
+            chosenchannel[row][column] = ((chosenchannel[row][column]) | 1)
+        else:
+            chosenchannel[row][column] = (chosenchannel[row][column] & 254)
+    
+
+    if nameChannel=="blue":
+        codedImage=cv2.merge((chosenchannel,green,red))
+    elif nameChannel=="red":
+        codedImage=cv2.merge((blue,green,chosenchannel))
+    else:
+        codedImage=cv2.merge((blue,chosenchannel,red))
+    
+    
+    return codedImage
+
+
+

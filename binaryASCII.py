@@ -28,6 +28,7 @@ def textToBin( Asciitext):
 
 #Pode receber uma listacalma, eu tenho um arra normal ou um np.array (melhor), mas sempre de tamanho 8
 def byteToText( byte): #byte = array de 8 bools
+
     characterBin=""
     for  bit in byte:
         if (bit):
