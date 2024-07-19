@@ -1,12 +1,12 @@
 import cv2
 import numpy as np
-from comparar import *
 from binaryoperations import *
 import hashlib
 import os
 
-def bestRGBChannel(caminho): #passar o caminho da imagem
-    imagem = cv2.imread(caminho)
+def bestRGBChannel(path): #passar o caminho da imagem
+    print(f" escolhendo o canal de {path}")
+    imagem = cv2.imread(path)
     blue, green, red = cv2.split(imagem)
 
     mediaBlue = np.mean(blue)
@@ -22,7 +22,6 @@ def bestRGBChannel(caminho): #passar o caminho da imagem
         return ("green", green)
     else:
         return ("red", red)
-
 
 def textToHash(text):
     text = str(text).encode('ascii')
@@ -105,9 +104,9 @@ def insertBits(path,senha,message):
     fileName, extension = os.path.splitext(fileName)
 
 
-    cv2.imwrite(f"{fileName}encoded.png",codedImage) #salva a imagem criptografada
+    cv2.imwrite(f"{os.path.dirname(path)}/{fileName}Encoded.png",codedImage) #salva a imagem criptografada
 
-    return codedImage #retorna a imagem em forma de matriz, acho que esse return vai ser removido
+    #retorno da imagem (em forma de matriz) removida, agora a função só insere e já salva o .png novo
 
 def extractBits(path,senha):
 

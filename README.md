@@ -7,7 +7,7 @@ Projeto de álgebra linear sobre implementação de esteganografia e criptografi
 - [x] Criar lógica de iteração da imagem baseado na senha (hashing)
 - [x] Usar a lógica de iteração para manipular o canal de cores
 - [x] Aplicar o canal de cores manipulado na imagem original
-- [ ] Usar a lógica de iteração para recuperar a mensagem binária
+- [x] Usar a lógica de iteração para recuperar a mensagem binária
 - [x] Reverter a mensagem binária para ASCII
 - [ ] Interface gráfica pra codificar e decodificar sem usar o terminal
 

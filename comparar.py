@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 
-
 def bestRGBChannel(caminho): #passar o caminho da imagem
     imagem = cv2.imread(caminho)
     blue, green, red = cv2.split(imagem)
@@ -19,6 +18,3 @@ def bestRGBChannel(caminho): #passar o caminho da imagem
         return ("green", green)
     else:
         return ("red", red)
-
-
-#print(bestRGBChannel("bluebest.png"))
