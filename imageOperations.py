@@ -68,45 +68,45 @@ def iterate(channel,senha): #iterar uma imagem baseado em uma senha, gerador de 
        #print(f"\ncoordernada escolhida: {chosenrow};{chosencolumn} baseada no numero {numero_gerado} ")
         yield((chosenrow,chosencolumn))
 
-def insertBits(path,senha,message):
+import os
+import cv2
 
-    bits=textToBin(message)
+def insertBits(path, senha, message):
+    bits = textToBin(message)
     
-    nameChannel,chosenchannel = bestRGBChannel(path)
+    nameChannel, chosenchannel = bestRGBChannel(path)
 
     image = cv2.imread(path)
     
-    blue,green,red = cv2.split(image)
+    blue, green, red = cv2.split(image)
 
-
-    coordGen=iterate(chosenchannel,senha)
+    coordGen = iterate(chosenchannel, senha)
 
     for bit in bits:
-        coords=next(coordGen)
-        row=coords[0]
-        column=coords[1]
+        coords = next(coordGen)
+        row = coords[0]
+        column = coords[1]
 
-        if(bit):
+        if bit:
             chosenchannel[row][column] = ((chosenchannel[row][column]) | 1)
         else:
             chosenchannel[row][column] = (chosenchannel[row][column] & 254)
-    
 
-    if nameChannel=="blue":
-        codedImage=cv2.merge((chosenchannel,green,red))
-    elif nameChannel=="red":
-        codedImage=cv2.merge((blue,green,chosenchannel))
+    if nameChannel == "blue":
+        codedImage = cv2.merge((chosenchannel, green, red))
+    elif nameChannel == "red":
+        codedImage = cv2.merge((blue, green, chosenchannel))
     else:
-        codedImage=cv2.merge((blue,chosenchannel,red))
-    
+        codedImage = cv2.merge((blue, chosenchannel, red))
 
     fileName = os.path.basename(path)
     fileName, extension = os.path.splitext(fileName)
 
+    encoded_image_path = os.path.join(os.path.dirname(path), f"{fileName}Encoded.png")
+    cv2.imwrite(encoded_image_path, codedImage)
 
-    cv2.imwrite(f"{os.path.dirname(path)}/{fileName}Encoded.png",codedImage) #salva a imagem criptografada
+    return encoded_image_path
 
-    #retorno da imagem (em forma de matriz) removida, agora a função só insere e já salva o .png novo
 
 def extractBits(path,senha):
 

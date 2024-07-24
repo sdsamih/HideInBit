@@ -9,6 +9,6 @@ Projeto de álgebra linear sobre implementação de esteganografia e criptografi
 - [x] Aplicar o canal de cores manipulado na imagem original
 - [x] Usar a lógica de iteração para recuperar a mensagem binária
 - [x] Reverter a mensagem binária para ASCII
-- [x] Interface gráfica pra codificar e decodificar sem usar o terminal
+- [ ] Interface gráfica pra codificar e decodificar sem usar o terminal
 
 👍👍👍👍👍👍👍👍👍👍👍👍👍

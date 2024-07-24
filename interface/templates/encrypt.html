@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Criptografar imagem</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Criptografar imagem</h1>
+        <form action="{{ url_for('encrypt_page') }}" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="file">Selecione a imagem:</label>
+                <input type="file" name="file" accept="image/*" required>
+            </div>
+            <div>
+                <label for="message">Digite a mensagem:</label>
+                <textarea name="message" rows="4" required></textarea>
+            </div>
+            <div>
+                <label for="password">Senha:</label>
+                <input type="password" name="password" required>
+            </div>
+            <button type="submit">Criptografar</button>
+        </form>
+        <div class="buttons">
+            <a href="{{ url_for('home') }}" class="button">Voltar</a>
+        </div>
+    </div>
+</body>
+</html>

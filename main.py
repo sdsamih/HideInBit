@@ -1,4 +1,5 @@
 import cv2
+
 from binaryoperations import *
 from imageOperations import *
 
@@ -11,7 +12,7 @@ image = cv2.imread(path)
 insertBits(path,senha,message)
 
 path2="imagens/lennaEncoded.png"
-senha2="124"
+senha2="123"
 
 mensagemExtraida = extractBits(path2,senha2)
 

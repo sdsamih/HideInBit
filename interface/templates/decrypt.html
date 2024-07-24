@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Descriptografar imagem</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Descriptografar imagem</h1>
+        <form action="{{ url_for('decrypt_page') }}" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="file">Selecione a imagem Criptografada:</label>
+                <input type="file" name="file" accept="image/*" required>
+            </div>
+            <div>
+                <label for="password">Senha:</label>
+                <input type="password" name="password" required>
+            </div>
+            <button type="submit">Descriptografar</button>
+        </form>
+        {% if result %}
+            <div class="result">
+                <h2>mensagem Descriptografada:</h2>
+                <p>{{ result }}</p>
+            </div>
+        {% endif %}
+        <div class="buttons">
+            <a href="{{ url_for('home') }}" class="button">Voltar</a>
+        </div>
+    </div>
+</body>
+</html>
