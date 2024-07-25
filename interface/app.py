@@ -2,6 +2,7 @@ import sys
 import os
 from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
 from werkzeug.utils import secure_filename
+import re
 
 #volta uma pasta anterior para poder acessar os arq
 sys.path.append('..')
@@ -11,7 +12,7 @@ from imageOperations import *
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-app = Flask(__name__)
+app = Flask(_name_)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'supersecretkey'
 
@@ -58,11 +59,14 @@ def decrypt_page():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             password = request.form['password']
+            regexAscii = re.compile(r'[^\x00-\x7F]')
             extracted_message = extractBits(filepath, password)
+            if regexAscii.search(extracted_message):
+                extracted_message = 'senha incorreta'
             return render_template('decrypt.html', result=extracted_message)
     return render_template('decrypt.html')
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
     app.run(debug=True)
