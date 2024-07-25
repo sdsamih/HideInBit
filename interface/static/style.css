@@ -1,7 +1,6 @@
 body {
     font-family: Arial, sans-serif;
     background: 
-        linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, #030300 55%), 
         url('imagens/hackman.jpg') no-repeat center top;
     background-size: cover;
     margin: 0;

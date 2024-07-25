@@ -12,7 +12,7 @@ from imageOperations import *
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-app = Flask(_name_)
+app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'supersecretkey'
 
@@ -66,7 +66,7 @@ def decrypt_page():
             return render_template('decrypt.html', result=extracted_message)
     return render_template('decrypt.html')
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
     app.run(debug=True)
