@@ -13,24 +13,24 @@ Projeto de álgebra linear sobre implementação de esteganografia e criptografi
 
 👍👍👍
 
-Como usar (Linux CLI):
+Como usar (Linux CLI):<br>
 
-(Clonagem do repositório)
-  git clone https://github.com/sdsamih/HideInBit
-  cd HideInBit
+(Clonagem do repositório)<br>
+  git clone https://github.com/sdsamih/HideInBit<br>
+  cd HideInBit<br>
 
-(Opcional, criação do virtual enviroment):
-  python3 -m venv venv 
-  source venv/bin/activate 
+(Opcional, criação do virtual enviroment):<br>
+  python3 -m venv venv <br>
+  source venv/bin/activate <br>
   
-(Instalação das dependências)
-  pip install -r requirements.txt
+(Instalação das dependências)<br>
+  pip install -r requirements.txt<br>
 
-(Inicialização do programa)
-  cd interface
-  python3 app.py
+(Inicialização do programa)<br>
+  cd interface<br>
+  python3 app.py<br>
 
-No navegador, acesse http://127.0.0.1:5000
+No navegador, acesse http://127.0.0.1:5000<br>
 
 
 
